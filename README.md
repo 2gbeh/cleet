@@ -1,3 +1,5 @@
+# Live Coding Interview Questions
+
 ## Setup
 
 ```bash
@@ -20,7 +22,7 @@ npx tsc --init
 
 ```typescript
 function main() {
-  const output = 'Hello, World!';
+  const output = "Hello, World!";
   console.log("🚀 ~ main ~ output:", output);
 }
 
