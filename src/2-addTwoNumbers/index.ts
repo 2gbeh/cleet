@@ -1,4 +1,4 @@
-class ListNode {
+export class ListNode {
   val: number;
   next: ListNode | null;
   constructor(val?: number, next?: ListNode | null) {
@@ -11,14 +11,38 @@ function addTwoNumbers(
   l1: ListNode | null,
   l2: ListNode | null
 ): ListNode | null {
-  let output = new ListNode();
-  let current = l1;
-  while (current) {
-    console.log(current.val);
-    current = current.next;
-  }
-
-  return l1;
+  const listNodeToArray = (listNode: ListNode | null) => {
+    let [arr, current] = [[] as Array<number>, listNode];
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+    return arr;
+  };
+  const invertArrayValue = (array: Array<number>) =>
+    Number(array.join("").split("").reverse().join(""));
+  //
+  let [arr1, arr2] = [listNodeToArray(l1), listNodeToArray(l2)];
+  let [num1, num2] = [invertArrayValue(arr1), invertArrayValue(arr2)];
+  let invertedSumArray = (num1 + num2)
+    .toString()
+    .split("")
+    .reverse()
+    .map((n) => Number(n));
+  //
+  let output = new ListNode(invertedSumArray[0]);
+  let node = output;
+  invertedSumArray.map((n, i) => {
+    if (i > 0) {
+      let virtualNode = new ListNode(n);
+      node.next = virtualNode;
+      node = virtualNode;
+    }
+  });
+  console.log("🚀 ~ arr1:", arr1, arr2);
+  console.log("🚀 ~ num1:", num1, "+", num2, "=", num1 + num2);
+  console.log("🚀 ~ invertedSumArray:", invertedSumArray);
+  return output;
 }
 
 // TEST
