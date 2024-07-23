@@ -1,4 +1,4 @@
-function main(nums1: number[], nums2: number[]) {
+function findMedianSortedArrays(nums1: number[], nums2: number[]) {
   const union = nums1.concat(nums2);
   let [output, len, i] = [0, union.length, 0];
 
@@ -13,7 +13,7 @@ function main(nums1: number[], nums2: number[]) {
     output = (union[i - 1] + union[i]) / 2;
   }
 
-  console.log("🚀 ~ main ~ union:", union, output);
+  console.log("🚀 ~ findMedianSortedArrays ~ union:", union, output);
   return output;
 }
 
@@ -23,4 +23,4 @@ function main(nums1: number[], nums2: number[]) {
   { input: { nums1: [1, 2], nums2: [3, 4] }, expected: 2.5 },
   { input: { nums1: [3], nums2: [-2, -1] }, expected: 1 },
   { input: { nums1: [1], nums2: [2, 3, 4, 5, 6, 7, 8, 9, 10] }, expected: 5.5 },
-].map(({ input }) => main(input.nums1, input.nums2));
+].map(({ input }) => findMedianSortedArrays(input.nums1, input.nums2));
